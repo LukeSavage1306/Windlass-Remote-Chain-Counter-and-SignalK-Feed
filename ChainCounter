@@ -35,13 +35,7 @@ ReactESP app([]() {
   // ALWAYS start with a forward slash if specified. If left blank,
   // that indicates this sensor or transform does not have any
   // configuration to save.
-  // Note that if you want to be able to change the sk_path at runtime,
-  // you will need to specify a configuration path.
-  // As with the Signal K path, if you have multiple configurable sensors
-  // connected to the microcontroller, you will have a configuration path
-  // for each of them, such as config_path_portEngine =
-  // "/sensors/portEngine/rpm" and config_path_starboardEngine =
-  // "/sensor/starboardEngine/rpm".
+  
   const char* config_path = "/sensors/engine_rpm";
 
   // These two are necessary until a method is created to synthesize them.
