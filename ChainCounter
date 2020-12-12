@@ -320,7 +320,7 @@ void loop() {
     }
   }
   
-  sensor
+  Chaincounter
 
       ->connect_to(new SKOutputNumber(
           sk_path, config_path_skpath));  // connect the output of Frequency()
@@ -332,7 +332,6 @@ void loop() {
     Serial.read();
   }
 }
-  // connect a chain anchor board. 
 
 
 
