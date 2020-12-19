@@ -1,3 +1,5 @@
+Windlass Remote Control with Chain Counter and SignalK Feed
+
 This code builds on the work of AK-Hombergers original design.  In its current format it:
 
 * Is based on a Wemos D1 Mini (ESP8266) reading pulses from a conventional windlass chain sensor
@@ -28,12 +30,13 @@ To control the anchor chain relay just press:
 - "Reset" to reset the chain counter to zero
 
 Features:
-- Saftey stop to stop "anchor up" two events before reaching zero (can be changed in code with SAFETY_STOP).
-- Safety stop if maximum chain lenght is reached (standard 40 meters, can be changed with MAX_CHAIN_LENGTH)
+- Saftey stop to stop "anchor up" two gypsy revolutions before reaching zero (can be changed in code with SAFETY_STOP).
+- Safety stop if maximum chain length is reached (standard 40 meters, can be changed with MAX_CHAIN_LENGTH)
 - Watchdog timer to stop power after 1 second inactivity of client (e.g. due to connection problems).
-- Watchdog timer to detect blocking chain. Engine stops if no events are detected within 1 second for up/down command.
-- Current Chain Counter is stored in nonvolatile memory. ESP can be switched off after anchoring (counter is restored after new start).
+- Watchdog timer to detect blocked chain. Windlass stops if no events are detected within 1 second for up/down command.
+- Current Chain Counter is stored in nonvolatile memory. ESP can be switched off after anchoring and counter is restored after powering back up.
 - Demo mode to check functionality without having a windlass / chain counter connected to ESP (set ENABLE_DEMO to 1).
+- Detects windlass operation from other existing controls and counts chain for up/down/free fall
 
 ![Picture2](https://github.com/AK-Homberger/ESP8266_AnchorChainContol_WLAN/blob/main/SchematicsD1MiniChainCounterWLAN.png)
 
