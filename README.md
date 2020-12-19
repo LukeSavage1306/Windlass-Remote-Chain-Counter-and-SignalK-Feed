@@ -1,6 +1,6 @@
 # Windlass Remote Control with Chain Counter and Signalk Feed
 
-Crdeit for this app goes to AK-Hombergers  This builds upon his original design.  In its current format it:
+Crdeit for this app goes to AK-Hombergers  This builds upon his original design with inout from me and JeremyP.  In its current format it:
 
 * Is based on a Wemos D1 Mini (ESP8266) reading pulses from a conventional windlass chain sensor and WiFi access to effect control
 * Provides a wireless remote windlass control from any phone/tablet with wifi capability giving up/down/stop/chain-length-counter/counter-reset functionality
@@ -21,7 +21,7 @@ If working as WLAN client, determine the DHCP IP address with Serial Monitor of 
 
 This should give you a screen as per below on your phone/tablet
 
-![Picture1](https://github.com/AK-Homberger/ESP32_ChainCounter_WLAN/blob/master/IMG_1254.PNG)
+![Picture1](https://github.com/LukeSavage1306/Windlass-Remote-Chain-Counter-and-SignalK-Feed/blob/master/IMG_1254.PNG)
 
 To control the anchor chain relay just press:
 - "Down" for anchor down
