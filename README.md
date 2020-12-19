@@ -38,7 +38,7 @@ Features:
 - Demo mode to check functionality without having a windlass / chain counter connected to ESP (set ENABLE_DEMO to 1).
 - Detects windlass operation from other existing controls and counts chain for up/down/free fall
 
-![Picture2](https://github.com/LukeSavage1306/Windlass-Remote-Chain-Counter-and-SignalK-Feed/blob/main/)
+![Picture2](https://github.com/LukeSavage1306/Windlass-Remote-Chain-Counter-and-SignalK-Feed/blob/main/24vWindlassRemoteAndChainCounter.JPG)
 
 A [pcb layout](https://github.com/AK-Homberger/ESP8266_AnchorChainContol_WLAN/blob/main/D1MiniChainCounterWLAN-Board.pdf) is available in the main folder: "D1MiniChainCounterWLAN.kicad_pcb".
 
