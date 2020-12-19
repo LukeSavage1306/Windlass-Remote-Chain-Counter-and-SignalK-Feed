@@ -1,6 +1,6 @@
 # Windlass Remote Control with Chain Counter and Signalk Feed
 
-This code builds on the work of AK-Hombergers original design.  In its current format it:
+Crdeit for this app goes to AK-Hombergers  This builds upon his original design.  In its current format it:
 
 * Is based on a Wemos D1 Mini (ESP8266) reading pulses from a conventional windlass chain sensor and WiFi access to effect control
 * Provides a wireless remote windlass control from any phone/tablet with wifi capability giving up/down/stop/chain-length-counter/counter-reset functionality
