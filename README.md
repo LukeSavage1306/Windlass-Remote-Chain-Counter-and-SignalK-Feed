@@ -5,7 +5,7 @@ Crdeit for this app goes to AK-Hombergers  This builds upon his original design 
 * Is based on a Wemos D1 Mini (ESP8266) reading pulses from a conventional windlass chain sensor and WiFi access to effect control
 * Provides a wireless remote windlass control from any phone/tablet with wifi capability giving up/down/stop/chain-length-counter/counter-reset functionality
 * Provides chain-length to SignalK via a UDP connection
-* Works with 12 and 24 volt systems
+* Works seamlessly with 12 and 24 volt systems - no set up necessary 
 * Will also track chain-length when the windlass is operated by existing controls or when allowed to "free fall"
 
 To implement you need to
