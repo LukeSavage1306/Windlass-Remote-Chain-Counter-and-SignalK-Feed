@@ -1,6 +1,6 @@
 # Windlass Remote Control with Chain Counter and Signalk Feed
 
-Crdeit for this app goes to AK-Hombergers  This builds upon his original design with inout from me and JeremyP.  In its current format it:
+Credit for the original version of this app goes to AK-Hombergers  This version builds upon his original design with inout from me and JeremyP.  In its current format it:
 
 * Is based on a Wemos D1 Mini (ESP8266) reading pulses from a conventional windlass chain sensor and WiFi access to effect control
 * Provides a wireless remote windlass control from any phone/tablet with wifi capability giving up/down/stop/chain-length-counter/counter-reset functionality
@@ -17,7 +17,7 @@ To implement you need to
    - Flash the code to the ESP8266
 
 If working as a standalone Access Point, connect the phone/tablet to the defined network and start "192.168.4.1" in the browser.
-If working as WLAN client, determine the DHCP IP address with Serial Monitor of IDE and start your browser with that IP address.
+If working as WLAN client, determine the DHCP IP address using the Arduino Serial Monitor (or other IDE) and start your browser with that IP address.
 
 This should give you a screen as per below on your phone/tablet
 
