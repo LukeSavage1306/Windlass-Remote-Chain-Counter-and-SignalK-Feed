@@ -47,3 +47,5 @@ You can order a PCB from Aisler.net:https://aisler.net/p/ESKPZAUS
 ![Board](https://github.com/LukeSavage1306/Windlass-Remote-Chain-Counter-and-SignalK-Feed/blob/main/WindlassPCB.JPG)
 
 The current design should work for a Quick or Lofrans anchor chain relay and chain sensor (which looks like a simple reed relay triggerd from a magnet). Connection details  for a Quick windlass/counter can be found here: https://www.quickitaly.com/resources/downloads_qne-prod/1/CHC1203_IT-EN-FR_REV001A.pdf
+
+To send data to SignalK you need to define a UDP connection by .......[to be completed]
