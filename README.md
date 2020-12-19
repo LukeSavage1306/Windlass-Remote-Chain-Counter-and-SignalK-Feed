@@ -10,11 +10,11 @@ Crdeit for this app goes to AK-Hombergers  This builds upon his original design.
 
 To implement you need to
 * Build and install the windlass control board - PCB design available from the link below
-* Configure the code (in Arduino) for: 
-    WLAN type setting WiFiMode_AP_STA to "0" (stand alone access point) or "1" (Client with DHCP for SignalK feed)
-    Configure your wifi SSID and password
-    Calibrate for your sensor (e.g. 0.33. meter per revolution of the gypsy) and the maximum chain length
-    Flash the code to the ESP8266
+* Configure the code (in Arduino)
+   - WLAN type setting WiFiMode_AP_STA to "0" (stand alone access point) or "1" (Client with DHCP for SignalK feed)
+   - Configure your wifi SSID and password
+   - Calibrate for your sensor (e.g. 0.33. meter per revolution of the gypsy) and the maximum chain length
+   - Flash the code to the ESP8266
 
 If working as a standalone Access Point, connect the phone/tablet to the defined network and start "192.168.4.1" in the browser.
 If working as WLAN client, determine the DHCP IP address with Serial Monitor of IDE and start your browser with that IP address.
