@@ -3,7 +3,7 @@
 This code builds on the work of AK-Hombergers original design.  In its current format it:
 
 * Is based on a Wemos D1 Mini (ESP8266) reading pulses from a conventional windlass chain sensor and WiFi access to effect control
-* Provides a wireless remote windlass control from any phone/tablet with up/down/stop/chain-length/counter-reset functionality
+* Provides a wireless remote windlass control from any phone/tablet with up/down/stop/chain-length-counter/counter-reset functionality
 * Provides chain-length to SignalK via a UDP connection
 * Works with 12 and 24 volt systems
 * Will also track chain-length when the windlass is operated by existing controls or when allowed to "free fall"
@@ -13,8 +13,8 @@ To implement you need to
 * Configure the code (in Arduino) for: 
     WLAN type setting WiFiMode_AP_STA to "0" (stand alone access point) or "1" (Client with DHCP for SignalK feed)
     Configure your wifi SSID and password
-    Set Chain_Calibration_Value according to your sensor (e.g. 0.33. meter per revolution of the gypsy).
-    Flash the code to teh ESP8266
+    Calibrate for your sensor (e.g. 0.33. meter per revolution of the gypsy) and the maximum chain length
+    Flash the code to the ESP8266
 
 If working as a standalone Access Point, connect the phone/tablet to the defined network and start "192.168.4.1" in the browser.
 If working as WLAN client, determine the DHCP IP address with Serial Monitor of IDE and start your browser with that IP address.
