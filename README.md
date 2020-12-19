@@ -40,7 +40,7 @@ Features:
 
 ![Picture2](https://github.com/LukeSavage1306/Windlass-Remote-Chain-Counter-and-SignalK-Feed/blob/main/24vWindlassRemoteAndChainCounter.JPG)
 
-A [pcb layout](https://github.com/AK-Homberger/ESP8266_AnchorChainContol_WLAN/blob/main/D1MiniChainCounterWLAN-Board.pdf) is available in the main folder: "D1MiniChainCounterWLAN.kicad_pcb".
+A [pcb layout](https://github.com/LukeSavage1306/Windlass-Remote-Chain-Counter-SignalK-Feed/blob/main/24vD1MiniWindlassControlAndChainCounter.kicad_pcb) is available in the main folder.
 
 You can order a PCB from Aisler.net: https://aisler.net/p/WJSHXVDM
 
