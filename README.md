@@ -21,7 +21,7 @@ If working as WLAN client, determine the DHCP IP address with Serial Monitor of 
 
 This should give you a screen as per below on your phone/tablet
 
-![Picture1](https://github.com/LukeSavage1306/Windlass-Remote-Chain-Counter-and-SignalK-Feed/blob/master/IMG_1254.PNG)
+![Picture1](https://github.com/LukeSavage1306/Windlass-Remote-Chain-Counter-and-SignalK-Feed/blob/main/IMG_1254.PNG)
 
 To control the anchor chain relay just press:
 - "Down" for anchor down
