@@ -3,7 +3,7 @@
 This code builds on the work of AK-Hombergers original design.  In its current format it:
 
 * Is based on a Wemos D1 Mini (ESP8266) reading pulses from a conventional windlass chain sensor and WiFi access to effect control
-* Provides a wireless remote windlass control from any phone/tablet with up/down/stop/chain-length-counter/counter-reset functionality
+* Provides a wireless remote windlass control from any phone/tablet with wifi capability giving up/down/stop/chain-length-counter/counter-reset functionality
 * Provides chain-length to SignalK via a UDP connection
 * Works with 12 and 24 volt systems
 * Will also track chain-length when the windlass is operated by existing controls or when allowed to "free fall"
