@@ -20,7 +20,7 @@ To implement you need to
 If working as a standalone Access Point, connect the phone/tablet to the defined network and start "192.168.4.1" in the browser.
 If working as WLAN client, determine the DHCP IP address using the Arduino Serial Monitor (or other IDE) and start your browser with that IP address.
 
-This should give you a screen as per below on your phone/tablet
+This should give you a screen as per below on your phone/tablet.  A flashing red dot in the title bar indicates connection established with the Wemos.
 
 ![Picture1](https://github.com/LukeSavage1306/Windlass-Remote-Chain-Counter-and-SignalK-Feed/blob/main/IMG_1254.PNG)
 
@@ -48,6 +48,8 @@ You can order a PCB from Aisler.net:https://aisler.net/p/ESKPZAUS
 ![Board](https://github.com/LukeSavage1306/Windlass-Remote-Chain-Counter-and-SignalK-Feed/blob/main/WindlassPCB.JPG)
 
 The current design should work for a Quick or Lofrans anchor chain relay and chain sensor (which looks like a simple reed relay triggerd from a magnet). Connection details  for a Quick windlass/counter can be found here: https://www.quickitaly.com/resources/downloads_qne-prod/1/CHC1203_IT-EN-FR_REV001A.pdf
+
+The board requires connection to your windlass power supply (12v or 24v - no configuration necessary), connection to your windlass sensor (polarity of connection does not matter) and connection of the Up and Down relay feeds to the existing Up and Down terminals on the main windlass relay (note: the switching terminals that connect to any existing controls - NOT the motor output terminals).
 
 To send data to SignalK you need to define a UDP connection.  Go to Server, Connections and define a new connection as per the picture below.  Match the port number to the number you used in the .ino code.  Once configured ChainLength should appear as a data item within the Data Browser.
 
