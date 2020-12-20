@@ -51,4 +51,4 @@ The current design should work for a Quick or Lofrans anchor chain relay and cha
 
 To send data to SignalK you need to define a UDP connection.  Go to Server, Connections and define a new connection as per the picture below.  Match the port number to the number you used in the .ino code.  Once configured ChainLength should appear as a data item within the Data Browser.
 
-![UDP connection](https://github.com/LukeSavage1306/Windlass-Remote-Chain-Counter-and-SignalK-Feed/blob/main/UDPconfiguration.PNG)
+![UDP connection](https://github.com/LukeSavage1306/Windlass-Remote-Chain-Counter-and-SignalK-Feed/blob/main/UDPconnectionconfiguration.png)
