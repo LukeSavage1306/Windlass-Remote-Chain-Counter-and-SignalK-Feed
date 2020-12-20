@@ -4,7 +4,7 @@ const char indexHTML[] PROGMEM = R"=====(
 <html><head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
-<title>Chain Lenght</title>
+<title>Chain Length</title>
 <script src="gauge.min.js"></script>
 
 <script type="text/javascript">
