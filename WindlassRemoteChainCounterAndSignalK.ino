@@ -270,9 +270,9 @@ void loop() {
   if ( ( millis() > Watchdog_Timer + 1000 ) ||                     // Check HTTP connnection
        ( (OnOff == 1) && (millis() > Last_event_time + 1000)) )  { // Check events if engine is on
 
-//    digitalWrite(Chain_Up_Pin, LOW );                              // Relay off after 1 second inactivity  JCHP commented out
-//    digitalWrite(Chain_Down_Pin, LOW );                            // JCHP commented out
-//    OnOff = 0;                                                     // JCHP commented out
+      digitalWrite(Chain_Up_Pin, LOW );                              // Relay off after 1 second inactivity  COMMENT OUT THESE THREE LINES TO BENCH TEST
+      digitalWrite(Chain_Down_Pin, LOW );                            
+      OnOff = 0;                                                     
   }
   
   if ((OnOff == 1 && (digitalRead(Chain_Up_Override_Pin) == LOW))||(OnOff == 1&& (digitalRead(Chain_Down_Override_Pin)) == LOW)){  //If the app is on and one of the relays is operated
