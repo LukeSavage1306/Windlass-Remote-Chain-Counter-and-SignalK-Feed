@@ -1,6 +1,6 @@
 # Windlass Remote Control with Chain Counter and Signalk Feed
 
-Credit for the original version of this app goes to AK-Hombergers  This version builds upon his original design with input from me and JeremyP.  As at December 18th Ihave yet to install and test on the boat but it is working"on the bench" - so use with caution and no warranty!  In its current format it:
+Credit for the original version of this app goes to AK-Hombergers.  This version builds upon his original design with input from me and JeremyP.  As at December 18th I have yet to install and test on the boat but it is working "on the bench" - so use with caution and absolutley no warranty!  In its current format it:
 
 * Is based on a Wemos D1 Mini (ESP8266) reading pulses from a conventional windlass chain sensor and WiFi access to effect control
 * Provides a wireless remote windlass control from any phone/tablet with wifi capability giving up/down/stop/chain-length-counter/counter-reset functionality
