@@ -7,6 +7,7 @@ Credit for the original version of this app goes to AK-Hombergers.  This version
 * Provides chain-length to SignalK via a UDP connection
 * Works seamlessly with 12 and 24 volt systems - no set up necessary 
 * Will also track chain-length when the windlass is operated by existing controls or when allowed to "free fall"
+* LED ON indicates that the board should be operating the windlass.  Off indicates board is in standb
 
 To implement you need to
 * Build and install the windlass control board - PCB design available from the link below
