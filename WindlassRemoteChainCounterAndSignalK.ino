@@ -318,7 +318,7 @@ void loop() {
       delay(100);
     }
     if (wifi_retry >= 5) {
-      Serial.println("\nReboot");                                  // Did not work -> restart ESP32
+      Serial.println("\nReboot");                                  // Did not work -> restart ESP8266
       ESP.restart();
     }
     
