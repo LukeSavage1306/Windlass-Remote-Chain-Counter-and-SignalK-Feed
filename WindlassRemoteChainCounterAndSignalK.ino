@@ -179,7 +179,7 @@ void setup() {
 
 
 void Event_Up() {                          // Handle UP request
-//  if ((OnOff == 0 && digitalRead(Chain_Up_Override_Pin) == HIGH && digitalRead(Chain_Down_Override_Pin) == HIGH) || (OnOff ==1)) {// Execute only if the app is already on, or if there isn't a manual override present
+  if (((OnOff == 0 && digitalRead(Chain_Up_Override_Pin) == HIGH && digitalRead(Chain_Down_Override_Pin) == HIGH)) || (OnOff ==1)) {// Execute only if the app is already on, or if there isn't a manual override present
   server.send(200, "text/plain", "-1000"); // Send response "-1000" means no  chainlength
   Serial.println("Up");
   digitalWrite(Chain_Up_Pin, HIGH );
@@ -191,8 +191,7 @@ void Event_Up() {                          // Handle UP request
 }
 
 void Event_Down() {                         // Handle Down request
-//  if ((OnOff == 0 && Chain_Up_Override_Pin == HIGH && Chain_Down_Override_Pin == HIGH) || (OnOff ==1)) {// Execute only if the app is already on, or if there isn't a manual override present
-// JCHP commented this out to get relays working
+  if (((OnOff == 0 && digtalRead(Chain_Up_Override_Pin) == HIGH && digitalRead(Chain_Down_Override_Pin) == HIGH)) || (OnOff ==1)) {// Execute only if the app is already on, or if there isn't a manual override present
   server.send(200, "text/plain", "-1000");  // Send response "-1000" means no  chainlength
   Serial.println("Down");
   digitalWrite(Chain_Up_Pin, LOW );
@@ -200,18 +199,16 @@ void Event_Down() {                         // Handle Down request
   Last_event_time = millis();
   UpDown = 1;
   OnOff = 1;
-//}}
+ }
 }
 
 void Event_Stop() {                         // Handle Stop request
-//  if ((OnOff == 0 && Chain_Up_Override_Pin == HIGH && Chain_Down_Override_Pin == HIGH) || (OnOff ==1)) {// Execute only if the app is already on, or if there isn't a manual override present
-// JCHP commented this out to get relays working
   server.send(200, "text/plain", "-1000");  // Send response "-1000" means no  chainlength
   Serial.println("Stop");
   digitalWrite(Chain_Up_Pin, LOW );
   digitalWrite(Chain_Down_Pin, LOW );
   OnOff = 0;
-//}}
+
 }
 
 void Event_Reset() {                        // Handle reset request to reset counter to 0
