@@ -31,6 +31,7 @@ To control the anchor chain relay just press:
 - "Reset" to reset the chain counter to zero
 
 Features:
+- Safety interlock so that Up/Down will not work if another (existing) control is already operating the windlass.
 - Safety stop to stop "anchor up" two gypsy revolutions before reaching zero (can be changed in code with SAFETY_STOP).
 - Safety stop if maximum chain length is reached (standard 40 meters, can be changed with MAX_CHAIN_LENGTH)
 - Watchdog timer to stop power after 1 second inactivity of client (e.g. due to connection problems).
