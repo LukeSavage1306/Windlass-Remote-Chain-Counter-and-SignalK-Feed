@@ -52,6 +52,6 @@ The current design should work for a Quick or Lofrans anchor chain relay and cha
 
 The board requires connection to your windlass power supply (12v or 24v - no configuration necessary), connection to your windlass sensor (polarity of connection does not matter) and connection of the Up and Down relay feeds to the existing Up and Down terminals on the main windlass relay (note: the switching terminals that connect to any existing controls - NOT the motor output terminals).
 
-To send data to SignalK you need to define a UDP connection.  Go to Server, Connections and define a new connection as per the picture below.  Match the port number to the number you used in the .ino code.  Once configured ChainLength should appear as a data item within the Data Browser.
+To send data to SignalK you need to define a UDP connection.  Go to Server, Connections and define a new connection as per the picture below.  Match the port number to the number you used in the .ino code (default is 4210).  Once configured ChainLength should appear as a data item within the Data Browser.
 
 ![UDP connection](https://github.com/LukeSavage1306/Windlass-Remote-Chain-Counter-and-SignalK-Feed/blob/main/UDPconnectionconfiguration.png)
