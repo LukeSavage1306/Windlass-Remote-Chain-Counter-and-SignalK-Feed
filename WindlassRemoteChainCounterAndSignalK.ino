@@ -131,9 +131,8 @@ void setup() {
     Serial.println("Start WLAN AP");
     Serial.print("IP address: ");
     Serial.println(WiFi.softAPIP());
-    
-  Udp.begin(localUdpPort);                          // Not sure if this is needed as again it is listening rather than sending
-  Serial.printf("Now listening at IP %s, UDP port %d\n", WiFi.localIP().toString().c_str(), localUdpPort);
+
+
 
   } else {
 
@@ -149,57 +148,66 @@ void setup() {
         ESP.restart();
       }
     }
-
-    Serial.println("");
-    Serial.println("WiFi connected");
-    Serial.println("IP address: ");
-    Serial.println(WiFi.localIP());
-    Udp.begin(localUdpPort);
+     // }
+  Serial.println("");
+  Serial.println("WiFi connected");
+  Serial.println("IP address: ");
+  Serial.println(WiFi.localIP());
+  
+  Udp.begin(localUdpPort);
+  
   Serial.printf("Now listening at IP %s, UDP port %d\n", WiFi.localIP().toString().c_str(), localUdpPort);
-  }
+  
+      char udpmessage[1024];
+      sprintf(udpmessage, "{\"context\": \"vessels.urn: mrn: imo: mmsi: 235083375\",\"updates\": [{\"meta\":[{\"path\": \"navigation.anchor.chainlength\",\"value\": {\"units\": \"m\",\"description\": \"deployed chain length\",\"displayName\": \"Chain Length\",\"shortName\": \"DCL\"}}]}]}");
+      Udp.beginPacket(ip1, outPort);
+      Udp.write(udpmessage);
+      Udp.endPacket();
+      Serial.printf("Metadata sent to SignalK");
+}
 
- 
 
 
-  // Handle HTTP request events from phone/tablet
 
-  server.on("/", Event_Index);
-  server.on("/gauge.min.js", Event_js);
-  server.on("/ADC.txt", Event_ChainCount);
-  server.on("/up", Event_Up);
-  server.on("/down", Event_Down);
-  server.on("/stop", Event_Stop);
-  server.on("/reset", Event_Reset);
+// Handle HTTP request events from phone/tablet
 
-  server.onNotFound(handleNotFound);
+server.on("/", Event_Index);
+server.on("/gauge.min.js", Event_js);
+server.on("/ADC.txt", Event_ChainCount);
+server.on("/up", Event_Up);
+server.on("/down", Event_Down);
+server.on("/stop", Event_Stop);
+server.on("/reset", Event_Reset);
 
-  server.begin();
-  Serial.println("HTTP Server started");
+server.onNotFound(handleNotFound);
+
+server.begin();
+Serial.println("HTTP Server started");
 }
 
 
 void Event_Up() {                          // Handle UP request
-  if (((OnOff == 0 && digitalRead(Chain_Up_Override_Pin) == HIGH && digitalRead(Chain_Down_Override_Pin) == HIGH)) || (OnOff ==1)) {// Execute only if the app is already on, or if there isn't a manual override present
-  server.send(200, "text/plain", "-1000"); // Send response "-1000" means no  chainlength
-  Serial.println("Up");
-  digitalWrite(Chain_Up_Pin, HIGH );
-  digitalWrite(Chain_Down_Pin, LOW );
-  Last_event_time = millis();
-  UpDown = -1;
-  OnOff = 1;
- }
+  if (((OnOff == 0 && digitalRead(Chain_Up_Override_Pin) == HIGH && digitalRead(Chain_Down_Override_Pin) == HIGH)) || (OnOff == 1)) { // Execute only if the app is already on, or if there isn't a manual override present
+    server.send(200, "text/plain", "-1000"); // Send response "-1000" means no  chainlength
+    Serial.println("Up");
+    digitalWrite(Chain_Up_Pin, HIGH );
+    digitalWrite(Chain_Down_Pin, LOW );
+    Last_event_time = millis();
+    UpDown = -1;
+    OnOff = 1;
+  }
 }
 
 void Event_Down() {                         // Handle Down request
-  if (((OnOff == 0 && digitalRead(Chain_Up_Override_Pin) == HIGH && digitalRead(Chain_Down_Override_Pin) == HIGH)) || (OnOff ==1)) {// Execute only if the app is already on, or if there isn't a manual override present
-  server.send(200, "text/plain", "-1000");  // Send response "-1000" means no  chainlength
-  Serial.println("Down");
-  digitalWrite(Chain_Up_Pin, LOW );
-  digitalWrite(Chain_Down_Pin, HIGH );
-  Last_event_time = millis();
-  UpDown = 1;
-  OnOff = 1;
- }
+  if (((OnOff == 0 && digitalRead(Chain_Up_Override_Pin) == HIGH && digitalRead(Chain_Down_Override_Pin) == HIGH)) || (OnOff == 1)) { // Execute only if the app is already on, or if there isn't a manual override present
+    server.send(200, "text/plain", "-1000");  // Send response "-1000" means no  chainlength
+    Serial.println("Down");
+    digitalWrite(Chain_Up_Pin, LOW );
+    digitalWrite(Chain_Down_Pin, HIGH );
+    Last_event_time = millis();
+    UpDown = 1;
+    OnOff = 1;
+  }
 }
 
 void Event_Stop() {                         // Handle Stop request
@@ -229,7 +237,7 @@ void Event_js() {                            // If "http://<ip address>/gauge.mi
 
 
 void Event_ChainCount() {                    // If  "http://<ip address>/ADC.txt" requested
-  
+
   float temp = (ChainCounter * Chain_Calibration_Value); // Chain in meters
   server.sendHeader("Cache-Control", "no-cache");
   server.send(200, "text/plain", String (temp));
@@ -266,41 +274,42 @@ void loop() {
   if ( ( millis() > Watchdog_Timer + 1000 ) ||                     // Check HTTP connnection
        ( (OnOff == 1) && (millis() > Last_event_time + 1000)) )  { // Check events if engine is on
 
-      digitalWrite(Chain_Up_Pin, LOW );                              // Relay off after 1 second inactivity  COMMENT OUT THESE THREE LINES TO BENCH TEST
-      digitalWrite(Chain_Down_Pin, LOW );                            
-      OnOff = 0;                                                     
+    digitalWrite(Chain_Up_Pin, LOW );                              // Relay off after 1 second inactivity  COMMENT OUT THESE THREE LINES TO BENCH TEST
+    digitalWrite(Chain_Down_Pin, LOW );
+    OnOff = 0;
   }
-  
-  if ((OnOff == 1 && (digitalRead(Chain_Up_Override_Pin) == LOW))||(OnOff == 1&& (digitalRead(Chain_Down_Override_Pin)) == LOW)){  //If the app is on and one of the relays is operated
-    digitalWrite(BUILTIN_LED,LOW);                                                      // then turn on the LED
+
+  if ((OnOff == 1 && (digitalRead(Chain_Up_Override_Pin) == LOW)) || (OnOff == 1 && (digitalRead(Chain_Down_Override_Pin)) == LOW)) { //If the app is on and one of the relays is operated
+    digitalWrite(BUILTIN_LED, LOW);                                                     // then turn on the LED
   } else {                                                                              // otherwise
-    digitalWrite(BUILTIN_LED,HIGH);                                                     // turn it off 
+    digitalWrite(BUILTIN_LED, HIGH);                                                    // turn it off
   }
-  
-  if (OnOff == 0) {                                     // If App is off  ... 
-  if (digitalRead(Chain_Up_Override_Pin) == LOW) {      // and there is a manual chain up over-ride 
-  UpDown = -1;                                          // set counter to reduce chain count
-  } else {
-  UpDown = 1;                                           // otherwise if App is off then set to increase counter ie free fall or powered down..
-  }}
-    
+
+  if (OnOff == 0) {                                     // If App is off  ...
+    if (digitalRead(Chain_Up_Override_Pin) == LOW) {      // and there is a manual chain up over-ride
+      UpDown = -1;                                          // set counter to reduce chain count
+    } else {
+      UpDown = 1;                                           // otherwise if App is off then set to increase counter ie free fall or powered down..
+    }
+  }
+
 
   if (ChainCounter != LastSavedCounter) {                          // If ChainCounter has changed then store new value to nonvolatile storage (if changed)
     EEPROM.write(0, ChainCounter);
     EEPROM.commit();
     LastSavedCounter = ChainCounter;
 
-    
-  float temp = (ChainCounter * Chain_Calibration_Value);            // Caluclate new length to send to SignalK
 
-  char udpmessage[1024];      // This and next few lines send the new length to SignalK.  You can change the path or source if you wish.
-  sprintf(udpmessage, "{\"updates\":[{\"$source\":\"ESP8266.Windlass.Control\",\"values\":[{\"path\":\"navigation.anchor.chainlength\",\"value\":%f}]}]}", temp);
-  Udp.beginPacket(ip1, outPort);
-  Udp.write(udpmessage);
-  Udp.endPacket();
+    float temp = (ChainCounter * Chain_Calibration_Value);            // Caluclate new length to send to SignalK
 
-  Serial.println(udpmessage); // print udpmessage to serial monitor in Arduino IDE, so can check JSON structure of the message is correct
-    
+    char udpmessage[1024];      // This and next few lines send the new length to SignalK.  You can change the path or source if you wish.
+    sprintf(udpmessage, "{\"updates\":[{\"$source\":\"ESP8266.Windlass.Control\",\"values\":[{\"path\":\"navigation.anchor.chainlength\",\"value\":%f}]}]}", temp);
+    Udp.beginPacket(ip1, outPort);
+    Udp.write(udpmessage);
+    Udp.endPacket();
+
+    Serial.println(udpmessage); // print udpmessage to serial monitor in Arduino IDE, so can check JSON structure of the message is correct
+
   }
 
   if (WiFiMode_AP_STA == 1) {                                      // Check connection if working as client
@@ -317,11 +326,11 @@ void loop() {
       Serial.println("\nReboot");                                  // Did not work -> restart ESP8266
       ESP.restart();
     }
-    
 
-  
-  
-  
+
+
+
+
   }
 
 
