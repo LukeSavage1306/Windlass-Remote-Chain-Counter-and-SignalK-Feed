@@ -27,7 +27,7 @@
 
 #define ENABLE_DEMO 0                // Set to 1 to enable Demo Mode with up/down counter
 #define SAFETY_STOP 2                // Defines safety stop for chain up. Stops defined number of revolutions before reaching zero
-#define MAX_CHAIN_LENGTH 40          // Define maximum chain length. Relay turns off after the value is reached
+#define MAX_CHAIN_LENGTH 40          // Define maximum chain lengthin metres. Relay turns off after the value is reached
 
 // Wifi: Select AP or Client
 
@@ -35,7 +35,7 @@
                                         // To use both the windlass control and feed SignalK you have to set to 1 as a Station 
 const char *ssid = "Your SSID";          // Set WLAN name for station connection
 const char *password = "Your Password";  // Set password for station connection
-IPAddress ip1(10, 10, 10, 1);           // IP Address to be used for SiganlK so that udp knows where to send messages
+IPAddress ip1(10, 10, 10, 1);           // IP Address to be used for SiganlK so that udp knows where to send messages - amend if yours is different
 unsigned int outPort = 4210;            // and which port to send to
 
 
@@ -158,7 +158,7 @@ void setup() {
   
   Serial.printf("Now listening at IP %s, UDP port %d\n", WiFi.localIP().toString().c_str(), localUdpPort);
   
-      char udpmessage[1024];
+      char udpmessage[1024];    //Next few lines send metadata to SignalK for chainlength - replace mmsi with your own "self" vessel details
       sprintf(udpmessage, "{\"context\": \"vessels.urn: mrn: imo: mmsi: 235083375\",\"updates\": [{\"meta\":[{\"path\": \"navigation.anchor.chainlength\",\"value\": {\"units\": \"m\",\"description\": \"deployed chain length\",\"displayName\": \"Chain Length\",\"shortName\": \"DCL\"}}]}]}");
       Udp.beginPacket(ip1, outPort);
       Udp.write(udpmessage);
@@ -238,7 +238,7 @@ void Event_js() {                            // If "http://<ip address>/gauge.mi
 
 void Event_ChainCount() {                    // If  "http://<ip address>/ADC.txt" requested
 
-  float temp = (ChainCounter * Chain_Calibration_Value); // Chain in meters
+  float temp = (ChainCounter * Chain_Calibration_Value); // Chain in metres
   server.sendHeader("Cache-Control", "no-cache");
   server.send(200, "text/plain", String (temp));
 
@@ -302,7 +302,7 @@ void loop() {
 
     float temp = (ChainCounter * Chain_Calibration_Value);            // Caluclate new length to send to SignalK
 
-    char udpmessage[1024];      // This and next few lines send the new length to SignalK.  You can change the path or source if you wish.
+    char udpmessage[1024];      // This and next few lines send the new length to SignalK.  You can change the  source if you wish.
     sprintf(udpmessage, "{\"updates\":[{\"$source\":\"ESP8266.Windlass.Control\",\"values\":[{\"path\":\"navigation.anchor.chainlength\",\"value\":%f}]}]}", temp);
     Udp.beginPacket(ip1, outPort);
     Udp.write(udpmessage);
