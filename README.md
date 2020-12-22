@@ -55,3 +55,5 @@ The board requires connection to your windlass power supply (12v or 24v - no con
 To send data to SignalK you need to define a UDP connection.  Go to Server, Connections and define a new connection as per the picture below.  Match the port number to the number you used in the .ino code (default is 4210).  Once configured ChainLength should appear as a data item within the Data Browser.
 
 ![UDP connection](https://github.com/LukeSavage1306/Windlass-Remote-Chain-Counter-and-SignalK-Feed/blob/main/UDPconnectionconfiguration.png)
+
+The gauge display can be changed to mirror your particular chain length in index_html.h   The range is set at lines 133/134 and the coloured zones at line 144
