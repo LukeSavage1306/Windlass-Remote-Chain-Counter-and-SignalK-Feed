@@ -48,6 +48,21 @@ You can order a PCB from Aisler.net:https://aisler.net/p/ESKPZAUS
 
 ![Board](https://github.com/LukeSavage1306/Windlass-Remote-Chain-Counter-and-SignalK-Feed/blob/main/WindlassPCB.JPG)
 
+## Parts:
+
+- Board [Link](https://aisler.net/p/WJSHXVDM)
+- U1 D1 Mini [Link](https://www.reichelt.de/de/en/d1-mini-esp8266-v3-0-d1-mini-p253978.html?&nbc=1)
+- J2 D24V10F5 [Link](https://eckstein-shop.de/Pololu-5V-1A-Step-Down-Spannungsregler-D24V10F5)
+- R1 Resistor 5 KOhm [Link](https://www.reichelt.de/de/en/carbon-film-resistor-1-4-w-5-1-0-kilo-ohms-1-4w-1-0k-p1315.html?&trstct=pos_2&nbc=1)
+- R2, R3 Resistor 270 Ohm (*2) [Link](https://www.reichelt.de/de/en/carbon-film-resistor-1-4-w-5-270-ohm-1-4w-270-p1390.html?&nbc=1)
+- R4, R5 Resistor 10 KOhm (*2) [Link](https://www.reichelt.de/de/en/carbon-film-resistor-1-4w-5-10-kilo-ohms-1-4w-10k-p1338.html?&nbc=1)
+- Q1, Q2, Q3, Q4 Transistor BC337 (*4) [Link](https://www.reichelt.de/de/en/transistor-to-92-bl-npn-45v-800ma-bc-337-25-dio-p219125.html?&nbc=1)
+- D2, D3 Diode 1N4148 (*2) [Link](https://www.reichelt.de/schalt-diode-100-v-150-ma-do-35-1n-4148-p1730.html?search=1n4148)
+- D1 Diode 1N4001 [Link](https://www.reichelt.de/de/en/rectifier-diode-do41-50-v-1-a-1n-4001-p1723.html?&nbc=1)
+- U2 H11-L1 [Link](https://www.reichelt.de/optokoppler-1-mbit-s-dil-6-h11l1m-p219351.html?search=H11-l1)
+- K1, K2 Relay (*2) [Link](https://www.reichelt.de/de/en/miniature-power-relay-g5q-1-no-5-v-dc-5-a-g5q-1a-eu-5dc-p258331.html?&nbc=1)
+- J1, J3, J4 Connector 2-pin (*3) [Link](https://www.reichelt.de/de/en/2-pin-terminal-strip-spacing-5-08-akl-101-02-p36605.html?&nbc=1)
+
 The current design should work for a Quick or Lofrans anchor chain relay and chain sensor (which looks like a simple reed relay triggerd from a magnet). Connection details  for a Quick windlass/counter can be found here: https://www.quickitaly.com/resources/downloads_qne-prod/1/CHC1203_IT-EN-FR_REV001A.pdf
 
 The board requires connection to your windlass power supply (12v or 24v - no configuration necessary), connection to your windlass sensor (polarity of connection does not matter) and connection of the Up and Down relay feeds to the existing Up and Down terminals on the main windlass relay (note: the switching terminals that connect to any existing controls - NOT the motor output terminals).
