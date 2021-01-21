@@ -57,7 +57,7 @@ Parts list currently points to largely German suppliers but Are generally widely
 - U3 K7805 1000R3L [Link](https://uk.rs-online.com/web/p/switching-regulators/1934015/)
 - C1 10uF 50v can electrolytic (can be reduced to 25v if running on a 12V system)
 - C2 22uF 15v can electrolytic 
-- R1 Resistor 5 KOhm [Link](https://www.reichelt.de/de/en/carbon-film-resistor-1-4-w-5-1-0-kilo-ohms-1-4w-1-0k-p1315.html?&trstct=pos_2&nbc=1)
+- R1 Resistor 5 KOhm (if using 12v you can reduce this to 2.2 Kohm to ensure accurate counting at low battery voltage) [Link](https://www.reichelt.de/de/en/carbon-film-resistor-1-4-w-5-1-0-kilo-ohms-1-4w-1-0k-p1315.html?&trstct=pos_2&nbc=1)
 - R2, R3 Resistor 270 Ohm (*2) [Link](https://www.reichelt.de/de/en/carbon-film-resistor-1-4-w-5-270-ohm-1-4w-270-p1390.html?&nbc=1)
 - R4, R5 Resistor 10 KOhm (*2) [Link](https://www.reichelt.de/de/en/carbon-film-resistor-1-4w-5-10-kilo-ohms-1-4w-10k-p1338.html?&nbc=1)
 - Q1, Q2, Q3, Q4 Transistor BC337 (*4) [Link](https://www.reichelt.de/de/en/transistor-to-92-bl-npn-45v-800ma-bc-337-25-dio-p219125.html?&nbc=1)
