@@ -52,7 +52,7 @@ You can order a PCB from Aisler.net:https://aisler.net/p/ESKPZAUS
 
 Parts list currently points to largely German suppliers but Are generally widely available with the exception of the PCB. If you want to source these elsewhere I can provide the detailed KiCad files. 
 
-- Board [Link](https://aisler.net/lukesavage/24vwirelessremote/24vd1minichaincounter)
+- Board [Link]((https://aisler.net/p/ESKPZAUS))
 - U1 D1 Mini [Link](https://www.reichelt.de/de/en/d1-mini-esp8266-v3-0-d1-mini-p253978.html?&nbc=1)
 - U3 K7805 1000R3L [Link](https://uk.rs-online.com/web/p/switching-regulators/1934015/)
 - C1 10uF 50v can electrolytic (can be reduced to 25v if running on a 12V system)
