@@ -1,5 +1,7 @@
 # Windlass Remote Control with Chain Counter and Signalk Feed
 
+IN THE PROCESS OF BEING UPDATED TO INCLUDE TRANSIENT SUPPRESSION - A NEW PCB AND PARTS LIST WILL BE UPLOADED ONCE BUILT AND TESTED - SHOULD BE END OF OCTOBER 2022 
+
 Credit for the original version of this app goes to AK-Hombergers.  This version builds upon his original design with input from me and JeremyP.  As at December 18th I have yet to install and test on the boat but it is working "on the bench" - so use with caution and absolutley no warranty!  In its current format it:
 
 * Is based on a Wemos D1 Mini (ESP8266) reading pulses from a conventional windlass chain sensor with WiFi access to effect control either directly in AP mode or via the boats main wifi in station mode
