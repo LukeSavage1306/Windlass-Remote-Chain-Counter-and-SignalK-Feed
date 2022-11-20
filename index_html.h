@@ -6,11 +6,9 @@ const char indexHTML[] PROGMEM = R"=====(
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
 <title>Chain Length</title>
 <script src="gauge.min.js"></script>
-
 <script type="text/javascript">
 var myAjax = false;
 window.onload = start;
-
 function start () 
 { 
 Url="/";
@@ -30,12 +28,9 @@ if (window.XMLHttpRequest) { // Mozilla, Safari,...
     }
   myAjax.onreadystatechange=LesenAjax;  
 }
-
 function aktualisieren()
 { 
-
 document.getElementById('Online').style.background = "red";
-
   if (!myAjax) 
   {
     return false;
@@ -46,12 +41,10 @@ document.getElementById('Online').style.background = "red";
   myAjax.send();
   }
 }
-
 function LesenAjax() 
 {
     if (myAjax.readyState==4 && myAjax.status==200)
     {
-
     var Temp=0.5;
     Temp = parseFloat (myAjax.responseText);
     if (Temp != -1000) {   // response to button
@@ -60,8 +53,6 @@ function LesenAjax()
        }
     }
 }
-
-
 function key(key)
 { 
   if (!myAjax) 
@@ -75,7 +66,6 @@ function key(key)
   myAjax.send();
    }
 }
-
 </script>
 
 <style type="text/css">
@@ -89,7 +79,6 @@ background:rgb(200, 200, 200);
 border-radius: 10px;
 padding:10px;       /*innen*/
 }
-
 .Form-Einstellungen
 {
 border: 1px solid #666666;
@@ -97,15 +86,12 @@ margin: 10px;      /*aussen*/
 padding:5px;       /*innen*/
 border-radius: 10px;
 background:#ddd;
-
 }
-
 .but
 {
 border-radius: 5px;
 background:lightgreen;
 }
-
 #Online
 {
 display: inline-block;
@@ -114,10 +100,6 @@ border: 1px solid #666666;
 border-radius: 10px;
 width: 20px;
 }
-
-
-
-
 </style>
 </head><body>
 <div id="wrap">
@@ -130,8 +112,8 @@ Gauge for Chain Length
 data-type="canv-gauge" 
 data-title="Chain" 
 data-min-value="0" 
-data-max-value="50" 
-data-major-ticks="0 5 10 15 20 25 30 35 40 45 50" 
+data-max-value="40" 
+data-major-ticks="0 5 10 15 20 25 30 35 40" 
 data-minor-ticks="1" 
 data-stroke-ticks="true" 
 data-units="Meter" 
@@ -141,10 +123,9 @@ data-animation-delay="5"
 data-animation-duration="2000" 
 data-animation-fn="bounce" 
 data-colors-needle="#f00 #00f" 
-data-highlights="30 40 #0f0 40 50 #f00" 
+data-highlights="00 12.5 #0f0 12.5 27.5 #f90 27.5 40 #f00" 
 data-onready="setInterval(aktualisieren,500);"
 ></canvas><br>
-
 <style>
 .button {
   background-color: #e7e7e7;
@@ -159,9 +140,15 @@ data-onready="setInterval(aktualisieren,500);"
   margin: 1px 2px;
   cursor: pointer;
 }
+.scopestyle{
+  display: block;
+  width:20%;
+  }
+.inputboxstyle{
+    height:26px;
+    }
+
 </style>
-
-
 <div style="text-align:center"
 <form>
 <input type="button" class="button" value="Down" onclick="key('down')"> 
@@ -170,10 +157,16 @@ data-onready="setInterval(aktualisieren,500);"
 <p> </p>
 <input type="button" class="button" value="Reset" onclick="key('reset')">
 </form>
-</div>
-</div>
-</div>
+<p></p>
+<form action="/preset">
+  <input type="number" class="inputboxstyle"  name="preset" min="1" max="400">  
+  <input id="btn" type="submit" id="btn" class="button" value="Target Scope" >
 
+
+</form>
+</div>
+</div>
+</div>
 </body>
 </html>
 )=====" ;
