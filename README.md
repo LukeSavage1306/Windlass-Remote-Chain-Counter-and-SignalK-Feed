@@ -47,7 +47,7 @@ To control the anchor chain relay just press:
 - "Up" for anchor up
 - "Stop" for Stop
 - "Reset" to reset the chain counter to zero
-- Or enter the desired scope and hit "Preset" to pay out/pull in to the set length
+- Or enter the desired scope and hit "Target Scope" to pay out/pull in to the set length
 
 
 
