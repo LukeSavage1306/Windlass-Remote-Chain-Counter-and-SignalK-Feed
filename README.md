@@ -51,7 +51,7 @@ To control the anchor chain relay just press:
 
 
 
-![Picture2](https://github.com/LukeSavage1306/Windlass-Remote-Chain-Counter-and-SignalK-Feed/blob/main/24vWindlassRemoteAndChainCounter.JPG)
+![Picture2](https://github.com/LukeSavage1306/Windlass-Remote-Chain-Counter-and-SignalK-Feed/blob/main/Schematic.png)
 
 A [pcb layout](https://github.com/LukeSavage1306/Windlass-Remote-Chain-Counter-and-SignalK-Feed/blob/main/24vD1MiniWindlassControlAndChainCounter.kicad_pcb) is available in the main folder. 
 
