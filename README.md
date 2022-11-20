@@ -1,22 +1,36 @@
 # Windlass Remote Control with Chain Counter and Signalk Feed
 
-IN THE PROCESS OF BEING UPDATED TO INCLUDE TRANSIENT SUPPRESSION - A NEW PCB AND PARTS LIST WILL BE UPLOADED ONCE BUILT AND TESTED - SHOULD BE END OF OCTOBER 2022 
 
-Credit for the original version of this app goes to AK-Hombergers.  This version builds upon his original design with input from me and JeremyP.  As at December 18th I have yet to install and test on the boat but it is working "on the bench" - so use with caution and absolutley no warranty!  In its current format it:
+Credit for the original version of this app goes to AK-Hombergers.
 
-* Is based on a Wemos D1 Mini (ESP8266) reading pulses from a conventional windlass chain sensor with WiFi access to effect control either directly in AP mode or via the boats main wifi in station mode
-* Provides a wireless remote windlass control from any phone/tablet with wifi capability giving up/down/stop/chain-length-counter/counter-reset functionality
+The current version:
+
+* Is based on a Wemos D1 Mini (ESP8266) reading pulses from a conventional windlass chain sensor with WiFi access to effect control either directly in AP mode or via the boats main wifi in station mode.
+* In AP mode uses mDNS for easy access via a named URL rather than remembering IP addresses
+* Provides a wireless remote windlass control from any phone/tablet with wifi capability giving up/down/stop/chain-length-counter/counter-reset functionality and the ability to enter a preset scope to which the windlass will automatically raise/lower the chain.
 * Provides chain-length to SignalK via a UDP connection
-* Works seamlessly with 12 and 24 volt systems - no set up necessary 
+* Works with 12 volt systems - just requires a single transient suppressor diode to be changed for 24v 
 * Will also track chain-length when the windlass is operated by existing controls or when allowed to "free fall"
 * LED ON indicates that the board should be operating the windlass.  Off indicates board is in standby
+* Stores current chain length in nonvolatile memory so that length is stored on switch off and restored after powering back up.
+* Demo mode to check correct operation without need for a gypsy sensor present.
+* Detects windlass operation from other existing controls and counts chain for up/down/free fall
+
+Includes various safety features:
+
+- Safety interlock so that Up/Down will not work if another (existing) control is already operating the windlass.
+- Safety stop to stop "anchor up" a preset number of gypsy revolutions before reaching zero (can be changed in code with SAFETY_STOP).
+- Safety stop if maximum chain length is reached (can be changed with MAX_CHAIN_LENGTH)
+- Safety watchdog timer to stop power after predetermined period of inactivity of client (e.g. due to loss of wifi connection).
+- Safety watchdog timer to detect blocked chain. Windlass stops if no events are detected within predetermined period of activity after up/down command.
+
 
 To implement you need to
 * Build and install the windlass control board - PCB design available from the link below
 * Configure the code (in Arduino)
    - WLAN type setting WiFiMode_AP_STA to "0" (stand alone access point) or "1" (Client with DHCP for SignalK feed).  Note code assumes SignalK server is at 10.10.10.1.  Configure to suit your set up
    - Configure your wifi SSID and password
-   - Calibrate for your sensor (e.g. 0.33. meter per revolution of the gypsy) and the maximum chain length
+   - Calibrate for your sensor (e.g. 0.35 meter per revolution of the gypsy) and the maximum chain length
    - Flash the code to the ESP8266
 
 If working as a standalone Access Point, connect the phone/tablet to the defined network and start "192.168.4.1" in the browser.
@@ -31,16 +45,9 @@ To control the anchor chain relay just press:
 - "Up" for anchor up
 - "Stop" for Stop
 - "Reset" to reset the chain counter to zero
+- Or enter the desired scope and hit "Preset" to pay out/pull in to the set length
 
-Features:
-- Safety interlock so that Up/Down will not work if another (existing) control is already operating the windlass.
-- Safety stop to stop "anchor up" two gypsy revolutions before reaching zero (can be changed in code with SAFETY_STOP).
-- Safety stop if maximum chain length is reached (standard 40 meters, can be changed with MAX_CHAIN_LENGTH)
-- Watchdog timer to stop power after 1 second inactivity of client (e.g. due to connection problems).
-- Watchdog timer to detect blocked chain. Windlass stops if no events are detected within 1 second for up/down command.
-- Current Chain Counter is stored in nonvolatile memory. ESP can be switched off after anchoring and counter is restored after powering back up.
-- Demo mode to check functionality without having a windlass / chain counter connected to ESP (set ENABLE_DEMO to 1).
-- Detects windlass operation from other existing controls and counts chain for up/down/free fall
+
 
 ![Picture2](https://github.com/LukeSavage1306/Windlass-Remote-Chain-Counter-and-SignalK-Feed/blob/main/24vWindlassRemoteAndChainCounter.JPG)
 
@@ -52,7 +59,7 @@ You can order a PCB from Aisler.net:https://aisler.net/p/ESKPZAUS
 
 ## Parts:
 
-Parts list currently points to largely German suppliers but Are generally widely available with the exception of the PCB. If you want to source these elsewhere I can provide the detailed KiCad files. 
+Parts list currently points to largely German suppliers but are generally widely available with the exception of the PCB. If you want to source these elsewhere I can provide the detailed KiCad files. 
 
 - Board [Link](https://aisler.net/p/ESKPZAUS)
 - U1 D1 Mini [Link](https://www.reichelt.de/de/en/d1-mini-esp8266-v3-0-d1-mini-p253978.html?&nbc=1)
@@ -71,7 +78,7 @@ Parts list currently points to largely German suppliers but Are generally widely
 
 The current design should work for a Quick or Lofrans anchor chain relay and chain sensor (which looks like a simple reed relay triggerd from a magnet). Connection details  for a Quick windlass/counter can be found here: https://www.quickitaly.com/resources/downloads_qne-prod/1/CHC1203_IT-EN-FR_REV001A.pdf
 
-The board requires connection to your windlass power supply (12v or 24v - no configuration necessary), connection to your windlass sensor (polarity of connection does not matter) and connection of the Up and Down relay feeds to the existing Up and Down terminals on the main windlass relay (note: the switching terminals that connect to any existing controls - NOT the motor output terminals).
+The board requires connection to your windlass power supply (12v or 24v - no configuration necessary), connection to your windlass sensor (polarity of connection does not matter) and connection of the Up and Down relay feeds to the existing Up and Down terminals on the main windlass relay (note: the switching terminals that connect to any existing switch controls - NOT the motor output terminals).
 
 To send data to SignalK you need to define a UDP connection.  Go to Server, Connections and define a new connection as per the picture below.  Match the port number to the number you used in the .ino code (default is 4210).  Once configured ChainLength should appear as a data item within the Data Browser.
 
