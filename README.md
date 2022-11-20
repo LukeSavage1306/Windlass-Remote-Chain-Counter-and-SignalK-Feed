@@ -40,7 +40,7 @@ If working as WLAN client, browsing to "windlass.local" should still work - alth
 
 This should give you a screen as per below on your phone/tablet.  A flashing red dot in the title bar indicates connection established with the Wemos.
 
-![Picture1](https://github.com/LukeSavage1306/Windlass-Remote-Chain-Counter-and-SignalK-Feed/blob/main/IMG_1254.PNG)
+![Picture1](https://github.com/LukeSavage1306/Windlass-Remote-Chain-Counter-and-SignalK-Feed/blob/main/87A64764-90E9-49FC-913E-AB4FD1F76114.jpeg)
 
 To control the anchor chain relay just press:
 - "Down" for anchor down
