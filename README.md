@@ -35,8 +35,8 @@ To implement you need to
    - Calibrate for your sensor (e.g. 0.35 meter per revolution of the gypsy) and the maximum chain length
    - Flash the code to the ESP8266
 
-If working as a standalone Access Point, connect the phone/tablet to the defined network and start "192.168.4.1" in the browser.
-If working as WLAN client, determine the DHCP IP address using the Arduino Serial Monitor (or other IDE) and start your browser with that IP address.
+If working as a standalone Access Point, connect the phone/tablet to the defined network (default SSID is "windlass", password "windlass", and browse to "windlass.local"
+If working as WLAN client, browsing to "windlass.local" should still work - although I haven't tested it.  If not determine the DHCP IP address using the Arduino Serial Monitor (or other IDE) and start your browser with that IP address.
 
 This should give you a screen as per below on your phone/tablet.  A flashing red dot in the title bar indicates connection established with the Wemos.
 
