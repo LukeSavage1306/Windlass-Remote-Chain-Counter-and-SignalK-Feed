@@ -57,7 +57,7 @@ A [pcb layout](https://github.com/LukeSavage1306/Windlass-Remote-Chain-Counter-a
 
 You can order a PCB from Aisler.net:https://aisler.net/p/ESKPZAUS
 
-![Board](https://github.com/LukeSavage1306/Windlass-Remote-Chain-Counter-and-SignalK-Feed/blob/main/WindlassPCB.jpg)
+![Board](https://github.com/LukeSavage1306/Windlass-Remote-Chain-Counter-and-SignalK-Feed/blob/main/WindlassPCB.PNG)
 
 ## Parts:
 
