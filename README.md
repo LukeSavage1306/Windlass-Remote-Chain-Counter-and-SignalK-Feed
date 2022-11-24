@@ -16,7 +16,7 @@ The current version:
 * LED ON indicates that the board should be operating the windlass.  Off indicates board is in standby
 * Stores current chain length in nonvolatile memory so that length is stored on switch off and restored after powering back up.
 * Demo mode to check correct operation without need for a gypsy sensor present.
-* Detects windlass operation from other existing controls and counts chain for up/down/free fall
+* Detects windlass operation from other existing controls and counts chain for up/down/free fall 
 
 Includes various safety features:
 
@@ -35,7 +35,7 @@ To implement you need to
    - Calibrate for your sensor (e.g. 0.35 meter per revolution of the gypsy) and the maximum chain length
    - Flash the code to the ESP8266
 
-If working as a standalone Access Point, connect the phone/tablet to the defined network (default SSID is "windlass", password "windlass", and browse to "windlass.local"
+If working as a standalone Access Point, connect the phone/tablet to the defined network (default SSID is "windlass", password "windlass" - can be changed at lines 23 and 24)  and browse to "windlass.local"  (can be changed at line 195)
 If working as WLAN client, browsing to "windlass.local" should still work - although I haven't tested it.  If not determine the DHCP IP address using the Arduino Serial Monitor (or other IDE) and start your browser with that IP address.
 
 This should give you a screen as per below on your phone/tablet.  A flashing red dot in the title bar indicates connection established with the Wemos.
@@ -80,9 +80,9 @@ Parts list currently points to largely German suppliers but are generally widely
 
 The current design should work for a Quick or Lofrans anchor chain relay and chain sensor (which looks like a simple reed relay triggerd from a magnet). Connection details  for a Quick windlass/counter can be found here: https://www.quickitaly.com/resources/downloads_qne-prod/1/CHC1203_IT-EN-FR_REV001A.pdf
 
-The board requires connection to your windlass power supply (12v or 24v - no configuration necessary), connection to your windlass sensor (polarity of connection does not matter) and connection of the Up and Down relay feeds to the existing Up and Down terminals on the main windlass relay (note: the switching terminals that connect to any existing switch controls - NOT the motor output terminals).
+The board requires connection to your windlass power supply (12v - for 24v change the transient suppressor diode D4 for circa 29v equivalent - no other configuration necessary), connection to your windlass sensor (polarity of connection does not matter) and connection of the Up and Down relay feeds to the existing Up and Down terminals on the main windlass relay (note: the switching terminals that connect to any existing switch controls - NOT the motor output terminals).
 
-To send data to SignalK you need to define a UDP connection.  Go to Server, Connections and define a new connection as per the picture below.  Match the port number to the number you used in the .ino code (default is 4210).  Once configured ChainLength should appear as a data item within the Data Browser.
+To access via the main boat wifi or to send data to SignalK you need to set up in Station mode.  To do that set WiFIMode_AP_STA to 1 at line 21 and define the main boat wifi SSID and Password at lines 23 and 24.   Define the signalk server IP and port at lines 25 and 26.  In Signalk you muse also define a UDP connection.  Go to Server, Connections and define a new connection as per the picture below.  Match the port number to the number you used in the .ino code (default is 4210).  Once configured ChainLength should appear as a data item within the Data Browser.
 
 ![UDP connection](https://github.com/LukeSavage1306/Windlass-Remote-Chain-Counter-and-SignalK-Feed/blob/main/UDPconnectionconfiguration.png)
 
