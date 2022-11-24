@@ -1,6 +1,6 @@
 # Windlass Remote Control with Chain Counter and Signalk Feed
 
-NOTE: As at mid November 2022 the code is the latest version as described below, but I have yet to upload the latest images, circuit schematic, pcb link etc.  Should be done in next week or so.
+NOTE: As at mid November 2022 the code, pcb link, images etc are the latest version as described below, but I have yet to update the purchasing links  Should be done in next week or so.
 
 
 Credit for the original version of this app goes to AK-Hombergers.
